@@ -20,16 +20,21 @@
   /* headers */
   /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
   #ifndef _WIN32_WINNT
-    #define _WIN32_WINNT 0x0501  /* Windows XP. */
+#define _WIN32_WINNT _WIN32_WINNT_WIN8 // Windows 8.0
   #endif
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
   #include <winsock2.h>
-  #include <Ws2tcpip.h>
+  #include <WS2tcpip.h>
+  #include <Windows.h>
 
   /* types */
   /* typedef SOCKET unsigned int; */
-typedef struct sockaddr_in SOCKADDR_IN;
+//int inet_pton(int af, const char *src, void *dst);
+//typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr_in sockaddr_in;
-typedef struct sockaddr SOCKADDR;
+//typedef struct sockaddr SOCKADDR;
 typedef struct sockaddr sockaddr;
 //#define inet_pton InetPton
 #endif
