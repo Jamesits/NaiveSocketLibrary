@@ -1,2 +1,2 @@
-# NaiveSocksLibrary
-Cross-platform C socks library.
+# NaiveSocketLibrary
+Cross-platform C socket library.
