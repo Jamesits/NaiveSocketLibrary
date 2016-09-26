@@ -16,27 +16,36 @@
 #endif
 
 #ifdef _NSL_OS_WINDOWS
-  #pragma comment(lib, "Ws2_32.lib")
   /* headers */
   /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
+
+  /* Winsock2 (some features) are only available from Windows 8 */
   #ifndef _WIN32_WINNT
-#define _WIN32_WINNT _WIN32_WINNT_WIN8 // Windows 8.0
+    #define _WIN32_WINNT _WIN32_WINNT_WIN8 // Windows 8.0
   #endif
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-  #include <winsock2.h>
+
+  /* prevent including old winsock.h */
+  #ifndef WIN32_LEAN_AND_MEAN
+    #define WIN32_LEAN_AND_MEAN
+  #endif
+
+  #include <Winsock2.h>
   #include <WS2tcpip.h>
   #include <Windows.h>
 
+  /* tell linker to get Winsock2 library */
+  #pragma comment(lib, "Ws2_32.lib")
+
   /* types */
-  /* typedef SOCKET unsigned int; */
-//int inet_pton(int af, const char *src, void *dst);
-//typedef struct sockaddr_in SOCKADDR_IN;
-typedef struct sockaddr_in sockaddr_in;
-//typedef struct sockaddr SOCKADDR;
-typedef struct sockaddr sockaddr;
-//#define inet_pton InetPton
+  /* 
+  typedef unsigned int SOCKET;
+  #define inet_pton InetPton
+  int inet_pton(int af, const char *src, void *dst);
+  typedef struct sockaddr_in SOCKADDR_IN;
+  typedef struct sockaddr SOCKADDR;
+  */
+  typedef struct sockaddr_in sockaddr_in;
+  typedef struct sockaddr sockaddr;
 #endif
 #ifdef _NSL_OS_POSIX
   /* headers */
