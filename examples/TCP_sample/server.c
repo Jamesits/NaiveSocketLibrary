@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
 	{
 		SOCKET sNewConnection;
 		SOCKADDR_IN clientAddr;
-		memset(&clientAddr, 0, sizeof(clientAddr));
-		int clientAddrLen = sizeof(clientAddr);
+		memset(&clientAddr, 0, NSL3TupleV4Size);
+		socklen_t clientAddrLen = NSL3TupleV4Size;
 		sNewConnection = accept(sListen, (SOCKADDR *)&clientAddr, &clientAddrLen);
 		printf("Connected from %s\n", inet_ntoa(clientAddr.sin_addr));
 		char message[] = "Hello world!";

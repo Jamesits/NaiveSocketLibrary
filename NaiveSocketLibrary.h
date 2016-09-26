@@ -78,6 +78,7 @@ bool NSLIsSocketValid(SOCKET socket);
 struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port);
 extern const size_t NSL3TupleV4Size;
 extern const socklen_t NSL3TupleV4SocketLen;
-/* bind to some 3 tuple */
+/* bind/connect to some 3 tuple */
 int NSLBindV4(int socket, const struct sockaddr *address);
+int NSLConnectV4(int socket, const struct sockaddr *address);
 #endif
