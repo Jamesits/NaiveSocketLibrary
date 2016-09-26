@@ -8,8 +8,6 @@
 #ifndef __NAIVESOCKETLIBRARY_H__
 #define __NAIVESOCKETLIBRARY_H__
 
-#pragma comment(lib, "ws2_32.lib")
-
 #ifdef _WIN32
   #define _NSL_OS_WINDOWS
 #else
@@ -18,6 +16,7 @@
 #endif
 
 #ifdef _NSL_OS_WINDOWS
+  #pragma comment(lib, "ws2_32.lib")
   /* headers */
   /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
   #ifndef _WIN32_WINNT
@@ -37,8 +36,14 @@
   #include <unistd.h> /* Needed for close() */
 
   /* types */
-  typedef SOCKET int;
+  typedef int SOCKET;
+  typedef struct sockaddr_in SOCKADDR_IN;
+  typedef struct sockaddr_in sockaddr_in;
+  typedef struct sockaddr SOCKADDR;
+  typedef struct sockaddr sockaddr;
 #endif
+
+#include <stdbool.h>
 
 /* initialize NaiveSocketLibrary */
 int NSLInit();

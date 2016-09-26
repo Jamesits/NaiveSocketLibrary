@@ -52,10 +52,10 @@ int NSLCloseSocket(SOCKET socket)
 bool NSLIsSocketValid(SOCKET socket)
 {
   #ifdef _NSL_OS_WINDOWS
-    return s != INVALID_SOCKET;
+    return socket != INVALID_SOCKET;
   #endif
   #ifdef _NSL_OS_POSIX
-    return s >= 0;
+    return socket >= 0;
   #endif
   /* holds some compiler warning */
   return false;
