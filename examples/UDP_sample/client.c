@@ -1,7 +1,14 @@
+/* 
+	NaiveSocketLibrary UDP test client
+	Listens on 0.0.0.0:5150
+	Sends plain string to server
+*/
+
+
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "../../NaiveSocketLibrary.h"
-#pragma comment(lib, "Ws2_32.lib")
 
 int main(int argc, char *argv[])
 {   
@@ -17,7 +24,7 @@ int main(int argc, char *argv[])
 
     printf("Type \"quit\" to exit program.\n");
 
-	while(1)
+	while(true)
 	{
 		char data[1024] = {0};
 		char recvBuff[1024] = {0};

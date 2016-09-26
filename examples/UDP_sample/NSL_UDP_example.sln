@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NSL_UDP_example_server", "NSL_UDP_example_server\NSL_UDP_example_server.vcxproj", "{51954CB0-BE94-4F6D-BFD5-D1C5C0FFB44C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NSL_UDP_example_client", "..\NSL_UDP_example_client\NSL_UDP_example_client.vcxproj", "{CBD9A825-AA03-4724-AD94-4BB7D1291D0C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NSL_UDP_example_client", "NSL_UDP_example_client\NSL_UDP_example_client.vcxproj", "{CBD9A825-AA03-4724-AD94-4BB7D1291D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -102,7 +102,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\NaiveSocketLibrary.c" />
-    <ClCompile Include="server.c" />
+    <ClCompile Include="..\server.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\NaiveSocketLibrary.h" />

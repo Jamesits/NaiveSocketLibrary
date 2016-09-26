@@ -110,11 +110,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\NaiveSocketLibrary.c" />
-    <ClCompile Include="..\..\server.c" />
+    <ClCompile Include="..\..\..\NaiveSocketLibrary.c" />
+    <ClCompile Include="..\server.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\NaiveSocketLibrary.h" />
+    <ClInclude Include="..\..\..\NaiveSocketLibrary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

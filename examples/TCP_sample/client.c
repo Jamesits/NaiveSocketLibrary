@@ -1,6 +1,7 @@
 /* 
 	NaiveSocketLibrary TCP test client
 	Connects to 127.0.0.1:5150
+	Sends plain string to server
 */
 #include <stdio.h>
 #include <string.h> /* for memset() */

@@ -1,13 +1,18 @@
-#include <stdio.h>
-#include "../../NaiveSocketLibrary.h"
+/* 
+	NaiveSocketLibrary UDP test server
+	Listens on 0.0.0.0:5150
+	Echos everything sent from client.
+*/
 
+#include <stdio.h>
+#include <stdbool.h>
+#include "../../NaiveSocketLibrary.h"
 
 int main(int argc, char *argv[])
 {
    	NSLInit();
 	SOCKET sListen = NSLCreateSocket(AF_INET, SOCK_DGRAM, 0);
 	
-
 	int	port = 5150;
 	SOCKADDR_IN local;
 	local.sin_family = AF_INET;
@@ -15,7 +20,6 @@ int main(int argc, char *argv[])
 	local.sin_addr.s_addr = htonl(INADDR_ANY);
 	 
 	bind(sListen, (SOCKADDR *)&local, sizeof(local));
-
 	printf("Binded...\n");
 
 	while(true)
@@ -31,7 +35,7 @@ int main(int argc, char *argv[])
 			printf("Client disconnected.\n");
 			break;
 		}
-
+		printf("Received: %s\n", message);
 		sendto(sListen, message, recvBytes, 0, (struct sockaddr*)&clientAddr, clientAddrLen); 
 	}
 
