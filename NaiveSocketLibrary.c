@@ -5,6 +5,8 @@
 */
 
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 #include "NaiveSocketLibrary.h"
 
 /* Init and dispose */
@@ -59,4 +61,28 @@ bool NSLIsSocketValid(SOCKET socket)
   #endif
   /* holds some compiler warning */
   return false;
+}
+
+const size_t NSL3TupleV4Size = sizeof(struct sockaddr);
+
+struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port)
+{
+  struct sockaddr_in* conn;
+  conn = malloc(sizeof(struct sockaddr_in));
+  memset(conn, 0, sizeof(struct sockaddr_in));
+  conn->sin_family = AF_INET;
+  inet_pton(AF_INET, "127.0.0.1", &(conn->sin_addr.s_addr));
+  conn->sin_port = htons(port);
+
+  return (struct sockaddr*)conn;
+}
+
+int NSLBindV4(int socket, const struct sockaddr *address)
+{
+  return bind(socket, address, NSL3TupleV4Size);
+}
+
+int NSLConnectV4(int socket, const struct sockaddr *address)
+{
+  return connect(socket, address, NSL3TupleV4Size);
 }

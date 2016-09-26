@@ -14,13 +14,9 @@ int main(int argc, char *argv[])
     NSLInit();
 	SOCKET sListen = NSLCreateSocket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	
-	int port = 5150;
-	SOCKADDR_IN serverAddr;
-	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_port = htons(port);    
-	serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	SOCKADDR *conn = NSLCreate3TupleV4("0.0.0.0", 5150);
 	  
-	bind(sListen, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
+	NSLBindV4(sListen, conn);
 	listen(sListen, 5); 
 	printf("Binded\n");
 

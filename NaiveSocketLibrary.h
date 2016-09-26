@@ -74,5 +74,9 @@ SOCKET NSLCreateSocket(int domain, int type, int protocol);
 int NSLCloseSocket(SOCKET sock);
 /* validate socket */
 bool NSLIsSocketValid(SOCKET socket);
-
+/* create a struct for 3 tuple of the other side */
+struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port);
+extern const size_t NSL3TupleV4Size;
+/* bind to some 3 tuple */
+int NSLBindV4(int socket, const struct sockaddr *address);
 #endif
