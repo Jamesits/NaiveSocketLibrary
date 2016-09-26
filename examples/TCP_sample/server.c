@@ -1,3 +1,8 @@
+/* 
+	NaiveSocketLibrary TCP test server
+	Listens on 0.0.0.0:5150
+*/
+
 #include <stdio.h>
 #include <string.h> /* for memset() */
 #include "../../NaiveSocketLibrary.h"
@@ -30,8 +35,13 @@ int main(int argc, char *argv[])
 
 		printf("Connected from %s\n", inet_ntoa(clientAddr.sin_addr));
 
-		char message[] = "Welcome to Network Programing!";
-		send(sNewConnection, message, sizeof(message), 0); 
+		char message[] = "Hello world!";
+		send(sNewConnection, message, sizeof(message), 0);
+
+		char msg_recv[1024] = {0};
+		int recvSize = recv(sNewConnection, msg_recv, 1024, 0);
+		printf("Received: %s\n", msg_recv);
+
 		NSLCloseSocket(sNewConnection);
 	}
 
