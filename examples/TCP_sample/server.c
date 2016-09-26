@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
 		sNewConnection = accept(sListen, (SOCKADDR *)&clientAddr, &clientAddrLen);
 		printf("Connected from %s\n", inet_ntoa(clientAddr.sin_addr));
 		char message[] = "Hello world!";
-		send(sNewConnection, message, sizeof(message), 0);
+		send(sNewConnection, message, sizeof(message), NULL);
 		char msg_recv[1024] = {0};
-		int recvSize = recv(sNewConnection, msg_recv, 1024, 0);
+		int recvSize = recv(sNewConnection, msg_recv, 1024, NULL);
 		printf("Received: %s\n", msg_recv);
 		NSLCloseSocket(sNewConnection);
 	}
