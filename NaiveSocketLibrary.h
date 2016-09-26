@@ -16,7 +16,7 @@
 #endif
 
 #ifdef _NSL_OS_WINDOWS
-  #pragma comment(lib, "ws2_32.lib")
+  #pragma comment(lib, "Ws2_32.lib")
   /* headers */
   /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
   #ifndef _WIN32_WINNT
@@ -27,6 +27,11 @@
 
   /* types */
   /* typedef SOCKET unsigned int; */
+typedef struct sockaddr_in SOCKADDR_IN;
+typedef struct sockaddr_in sockaddr_in;
+typedef struct sockaddr SOCKADDR;
+typedef struct sockaddr sockaddr;
+#define inet_pton InetPton
 #endif
 #ifdef _NSL_OS_POSIX
   /* headers */
