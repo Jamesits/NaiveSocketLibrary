@@ -12,9 +12,7 @@ int main(int argc, char *argv[])
 {
 	NSLInit();
     SOCKET sClient = NSLCreateSocket(AF_INET, SOCK_STREAM, 0);
-	
     SOCKADDR *conn = NSLCreate3TupleV4("127.0.0.1", 5150);
-
     NSLConnectV4(sClient, conn);   
 		
 	char message[1024] = {0};
@@ -25,7 +23,6 @@ int main(int argc, char *argv[])
 	send(sClient, msg_send, sizeof(msg_send), 0);
 			
     NSLCloseSocket(sClient);
-    
     NSLEnd();
     return 0;
 }

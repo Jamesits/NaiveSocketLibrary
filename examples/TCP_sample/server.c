@@ -13,12 +13,10 @@ int main(int argc, char *argv[])
 {
     NSLInit();
 	SOCKET sListen = NSLCreateSocket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	
 	SOCKADDR *conn = NSLCreate3TupleV4("0.0.0.0", 5150);
-	  
 	NSLBindV4(sListen, conn);
 	listen(sListen, 5); 
-	printf("Binded\n");
+	printf("binded, press ^C to quit...\n");
 
 	while(true)
 	{

@@ -64,6 +64,7 @@ bool NSLIsSocketValid(SOCKET socket)
 }
 
 const size_t NSL3TupleV4Size = sizeof(struct sockaddr);
+const socklen_t NSL3TupleV4SocketLen = NSL3TupleV4Size;
 
 struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port)
 {

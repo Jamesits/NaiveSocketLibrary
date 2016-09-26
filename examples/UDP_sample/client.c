@@ -13,14 +13,8 @@
 int main(int argc, char *argv[])
 {   
 	NSLInit();
-	
     SOCKET sConnection = NSLCreateSocket(AF_INET, SOCK_DGRAM, 0);
-	
-    sockaddr_in peer;
-	memset(&peer, 0, sizeof(sockaddr_in));
-    peer.sin_family = AF_INET; 
-	inet_pton(AF_INET, "127.0.0.1", &peer.sin_addr.s_addr);
-    peer.sin_port = htons((u_short)5150); 
+    SOCKADDR *peer = NSLCreate3TupleV4("127.0.0.1", 5150);
 
     printf("Type \"quit\" to exit program.\n");
 
@@ -29,12 +23,12 @@ int main(int argc, char *argv[])
 		char data[1024] = {0};
 		char recvBuff[1024] = {0};
 		printf("Send >");
-		scanf_s("%1023s", data);
+		scanf("%1023s", data);
 		if(strcmp("quit", data)==0)
 			break;
-		sendto(sConnection, data, strlen(data)+1, 0, (sockaddr *)&peer, sizeof(peer));
-		int peerLen = sizeof(peer);
-		recvfrom(sConnection, recvBuff, 1024, 0, (sockaddr *)&peer, &peerLen);
+		sendto(sConnection, data, strlen(data)+1, 0, peer, NSL3TupleV4Size);
+		socklen_t address_len = NSL3TupleV4SocketLen;
+		recvfrom(sConnection, recvBuff, 1024, 0, peer, &address_len);
 		printf("Received: %s\n", recvBuff);
 	}
 
