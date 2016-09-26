@@ -63,6 +63,7 @@ bool NSLIsSocketValid(SOCKET socket)
   return false;
 }
 
+/* fill socket endpoint information struct */
 const size_t NSL3TupleV4Size = sizeof(struct sockaddr);
 const socklen_t NSL3TupleV4SocketLen = NSL3TupleV4Size;
 
@@ -78,6 +79,7 @@ struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port)
   return (struct sockaddr*)conn;
 }
 
+/* bind and connect */
 int NSLBindV4(int socket, const struct sockaddr *address)
 {
   return bind(socket, address, NSL3TupleV4Size);

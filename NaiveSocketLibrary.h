@@ -74,10 +74,10 @@ SOCKET NSLCreateSocket(int domain, int type, int protocol);
 int NSLCloseSocket(SOCKET sock);
 /* validate socket */
 bool NSLIsSocketValid(SOCKET socket);
-/* create a struct for 3 tuple of the other side */
-struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port);
+/* fill socket endpoint information struct */
 extern const size_t NSL3TupleV4Size;
 extern const socklen_t NSL3TupleV4SocketLen;
+struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port);
 /* bind/connect to some 3 tuple */
 int NSLBindV4(int socket, const struct sockaddr *address);
 int NSLConnectV4(int socket, const struct sockaddr *address);
