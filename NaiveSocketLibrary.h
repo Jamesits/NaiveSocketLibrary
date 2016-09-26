@@ -31,7 +31,7 @@ typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr_in sockaddr_in;
 typedef struct sockaddr SOCKADDR;
 typedef struct sockaddr sockaddr;
-#define inet_pton InetPton
+//#define inet_pton InetPton
 #endif
 #ifdef _NSL_OS_POSIX
   /* headers */
