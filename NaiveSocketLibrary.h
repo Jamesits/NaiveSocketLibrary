@@ -41,6 +41,9 @@
   typedef struct sockaddr_in sockaddr_in;
   typedef struct sockaddr SOCKADDR;
   typedef struct sockaddr sockaddr;
+  typedef struct sockaddr_in6 SOCKADDR_IN6;
+  typedef struct sockaddr_in6 *PSOCKADDR_IN6;
+  typedef struct sockaddr_in6 FAR *LPSOCKADDR_IN6;
 #endif
 
 #include <stdbool.h>
