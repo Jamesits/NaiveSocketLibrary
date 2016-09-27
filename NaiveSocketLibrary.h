@@ -19,12 +19,14 @@
   /* headers */
   /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
 
-  /* Winsock2 (some features) are only available from Windows 8 */
+  /* Minimum supported Windows version */
+  /* Winsock2 (some features) are only available from Windows 8, */
+  /* see https://msdn.microsoft.com/en-us/library/windows/desktop/cc805844(v=vs.85).aspx */
   #ifndef _WIN32_WINNT
-    #define _WIN32_WINNT _WIN32_WINNT_WIN7 // Windows 8.0
+    #define _WIN32_WINNT _WIN32_WINNT_WIN7
   #endif
 
-  /* prevent including old winsock.h */
+  /* prevent WIndows.h from including old Winsock.h */
   #ifndef WIN32_LEAN_AND_MEAN
     #define WIN32_LEAN_AND_MEAN
   #endif
@@ -81,4 +83,11 @@ struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port);
 /* bind/connect to some 3 tuple */
 int NSLBindV4(SOCKET socket, const struct sockaddr *address);
 int NSLConnectV4(SOCKET socket, const struct sockaddr *address);
+/* send/recv */
+/*
+ssize_t NSLSend(int socket, const void *buffer, size_t length, int flags);
+ssize_t NSLSendToV4(int socket, const void *buffer, size_t length, int flags, const struct sockaddr *dest_addr, socklen_t dest_len);
+ssize_t NSLRecv(int socket, void *buffer, size_t length, int flags);
+ssize_t NSLRecvFromV4(int socket, void *restrict buffer, size_t length, int flags, struct sockaddr *restrict address, socklen_t *restrict address_len);
+*/
 #endif
