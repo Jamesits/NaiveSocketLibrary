@@ -11,8 +11,8 @@
 int main(int argc, char *argv[])
 {
 	NSLInit();
-    SOCKET sClient = NSLCreateSocket(AF_INET, SOCK_STREAM, 0);
-    SOCKADDR *conn = NSLCreate3TupleV4("127.0.0.1", 5150);
+    SOCKET sClient = NSLSocket(AF_INET, SOCK_STREAM, 0);
+    SOCKADDR *conn = NSLEndpointV4("127.0.0.1", 5150);
     NSLConnectV4(sClient, conn);   
 		
 	char message[1024] = {0};

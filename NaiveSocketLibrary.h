@@ -69,15 +69,15 @@ int NSLInit();
 /* dispose NaiveSocketLibrary */
 int NSLEnd();
 /* create socket */
-SOCKET NSLCreateSocket(int domain, int type, int protocol);
+SOCKET NSLSocket(int domain, int type, int protocol);
 /* free socket */
 int NSLCloseSocket(SOCKET sock);
 /* validate socket */
 bool NSLIsSocketValid(SOCKET socket);
 /* fill socket endpoint information struct */
-extern const size_t NSL3TupleV4Size;
-extern const socklen_t NSL3TupleV4SocketLen;
-struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port);
+extern const size_t NSLEndpointV4Size;
+extern const socklen_t NSLEndpointV4SocketLen;
+struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port);
 /* bind/connect to some 3 tuple */
 int NSLBindV4(int socket, const struct sockaddr *address);
 int NSLConnectV4(int socket, const struct sockaddr *address);

@@ -30,7 +30,7 @@ int NSLEnd(void)
 }
 
 /* create and close sockets */
-SOCKET NSLCreateSocket(int domain, int type, int protocol)
+SOCKET NSLSocket(int domain, int type, int protocol)
 {
   return socket(domain, type, protocol);
 }
@@ -59,15 +59,13 @@ bool NSLIsSocketValid(SOCKET socket)
   #ifdef _NSL_OS_POSIX
     return socket >= 0;
   #endif
-  /* holds some compiler warning */
-  return false;
 }
 
 /* fill socket endpoint information struct */
-const size_t NSL3TupleV4Size = sizeof(struct sockaddr);
-const socklen_t NSL3TupleV4SocketLen = NSL3TupleV4Size;
+const size_t NSLEndpointV4Size = sizeof(struct sockaddr);
+const socklen_t NSLEndpointV4SocketLen = NSLEndpointV4Size;
 
-struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port)
+struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port)
 {
   struct sockaddr_in* conn;
   conn = malloc(sizeof(struct sockaddr_in));
@@ -82,10 +80,10 @@ struct sockaddr* NSLCreate3TupleV4(const char *restrict address, u_short port)
 /* bind and connect */
 int NSLBindV4(int socket, const struct sockaddr *address)
 {
-  return bind(socket, address, NSL3TupleV4Size);
+  return bind(socket, address, NSLEndpointV4Size);
 }
 
 int NSLConnectV4(int socket, const struct sockaddr *address)
 {
-  return connect(socket, address, NSL3TupleV4Size);
+  return connect(socket, address, NSLEndpointV4Size);
 }

@@ -12,8 +12,8 @@
 int main(int argc, char *argv[])
 {
     NSLInit();
-	SOCKET sListen = NSLCreateSocket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	SOCKADDR *conn = NSLCreate3TupleV4("0.0.0.0", 5150);
+	SOCKET sListen = NSLSocket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	SOCKADDR *conn = NSLEndpointV4("0.0.0.0", 5150);
 	NSLBindV4(sListen, conn);
 	listen(sListen, 5); 
 	printf("binded, press ^C to quit...\n");
@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
 	{
 		SOCKET sNewConnection;
 		SOCKADDR_IN clientAddr;
-		memset(&clientAddr, 0, NSL3TupleV4Size);
-		socklen_t clientAddrLen = NSL3TupleV4Size;
+		memset(&clientAddr, 0, NSLEndpointV4Size);
+		socklen_t clientAddrLen = NSLEndpointV4Size;
 		sNewConnection = accept(sListen, (SOCKADDR *)&clientAddr, &clientAddrLen);
 		printf("Connected from %s\n", inet_ntoa(clientAddr.sin_addr));
 		char message[] = "Hello world!";

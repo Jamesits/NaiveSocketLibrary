@@ -12,8 +12,8 @@
 int main(int argc, char *argv[])
 {
    	NSLInit();
-	SOCKET sListen = NSLCreateSocket(AF_INET, SOCK_DGRAM, 0);
-	SOCKADDR *conn = NSLCreate3TupleV4("0.0.0.0", 5150);
+	SOCKET sListen = NSLSocket(AF_INET, SOCK_DGRAM, 0);
+	SOCKADDR *conn = NSLEndpointV4("0.0.0.0", 5150);
 	NSLBindV4(sListen, conn);
 	printf("binded, press ^C to quit...\n");
 
@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
 		memset(&clientAddr, 0, sizeof(clientAddr));
 				
 		char message[1024] = {0};
-		socklen_t address_len = NSL3TupleV4SocketLen;
+		socklen_t address_len = NSLEndpointV4SocketLen;
 		int recvBytes = recvfrom(sListen, message, sizeof(message), 0, (struct sockaddr*)&clientAddr, &address_len);
 		if(recvBytes <= 0) 
 		{
-			printf("Client disconnected.\n");
+			// non-blocking receive will return a -1
 			break;
 		}
 		printf("Received: %s\n", message);
