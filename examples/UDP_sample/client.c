@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
 	}
 
     NSLCloseSocket(sConnection);
+    free(peer);
     NSLEnd();
     return 0;
 }

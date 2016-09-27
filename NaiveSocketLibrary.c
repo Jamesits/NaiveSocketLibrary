@@ -65,13 +65,13 @@ bool NSLIsSocketValid(SOCKET socket)
 const size_t NSLEndpointV4Size = sizeof(struct sockaddr);
 const socklen_t NSLEndpointV4SocketLen = (socklen_t)sizeof(struct sockaddr);
 
-struct sockaddr* NSLEndpointV4(const char * address, u_short port)
+struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port)
 {
   struct sockaddr_in* conn;
   conn = malloc(sizeof(struct sockaddr_in));
   memset(conn, 0, sizeof(struct sockaddr_in));
   conn->sin_family = AF_INET;
-  inet_pton(AF_INET, "127.0.0.1", &(conn->sin_addr.s_addr));
+  inet_pton(AF_INET, address, &(conn->sin_addr.s_addr));
   conn->sin_port = htons(port);
 
   return (struct sockaddr*)conn;

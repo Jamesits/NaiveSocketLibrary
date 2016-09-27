@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 	}
 
    NSLCloseSocket(sListen);
+   free(conn);
    NSLEnd();
    return 0;
 }

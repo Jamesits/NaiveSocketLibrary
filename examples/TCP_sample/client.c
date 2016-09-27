@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 	send(sClient, msg_send, sizeof(msg_send), 0);
 			
     NSLCloseSocket(sClient);
+    free(conn);
     NSLEnd();
     return 0;
 }
