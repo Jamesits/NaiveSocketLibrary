@@ -79,6 +79,6 @@ extern const size_t NSLEndpointV4Size;
 extern const socklen_t NSLEndpointV4SocketLen;
 struct sockaddr* NSLEndpointV4(const char * address, u_short port);
 /* bind/connect to some 3 tuple */
-int NSLBindV4(int socket, const struct sockaddr *address);
-int NSLConnectV4(int socket, const struct sockaddr *address);
+int NSLBindV4(SOCKET socket, const struct sockaddr *address);
+int NSLConnectV4(SOCKET socket, const struct sockaddr *address);
 #endif

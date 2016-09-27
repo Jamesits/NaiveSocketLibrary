@@ -78,12 +78,12 @@ struct sockaddr* NSLEndpointV4(const char * address, u_short port)
 }
 
 /* bind and connect */
-int NSLBindV4(int socket, const struct sockaddr *address)
+int NSLBindV4(SOCKET socket, const struct sockaddr *address)
 {
   return bind(socket, address, NSLEndpointV4SocketLen);
 }
 
-int NSLConnectV4(int socket, const struct sockaddr *address)
+int NSLConnectV4(SOCKET socket, const struct sockaddr *address)
 {
   return connect(socket, address, NSLEndpointV4SocketLen);
 }
