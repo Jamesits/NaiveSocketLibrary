@@ -63,9 +63,9 @@ bool NSLIsSocketValid(SOCKET socket)
 
 /* fill socket endpoint information struct */
 const size_t NSLEndpointV4Size = sizeof(struct sockaddr);
-const socklen_t NSLEndpointV4SocketLen = NSLEndpointV4Size;
+const socklen_t NSLEndpointV4SocketLen = (socklen_t)sizeof(struct sockaddr);
 
-struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port)
+struct sockaddr* NSLEndpointV4(const char * address, u_short port)
 {
   struct sockaddr_in* conn;
   conn = malloc(sizeof(struct sockaddr_in));
@@ -80,10 +80,10 @@ struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port)
 /* bind and connect */
 int NSLBindV4(int socket, const struct sockaddr *address)
 {
-  return bind(socket, address, NSLEndpointV4Size);
+  return bind(socket, address, NSLEndpointV4SocketLen);
 }
 
 int NSLConnectV4(int socket, const struct sockaddr *address)
 {
-  return connect(socket, address, NSLEndpointV4Size);
+  return connect(socket, address, NSLEndpointV4SocketLen);
 }

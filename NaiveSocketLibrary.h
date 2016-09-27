@@ -21,7 +21,7 @@
 
   /* Winsock2 (some features) are only available from Windows 8 */
   #ifndef _WIN32_WINNT
-    #define _WIN32_WINNT _WIN32_WINNT_WIN8 // Windows 8.0
+    #define _WIN32_WINNT _WIN32_WINNT_WIN7 // Windows 8.0
   #endif
 
   /* prevent including old winsock.h */
@@ -77,7 +77,7 @@ bool NSLIsSocketValid(SOCKET socket);
 /* fill socket endpoint information struct */
 extern const size_t NSLEndpointV4Size;
 extern const socklen_t NSLEndpointV4SocketLen;
-struct sockaddr* NSLEndpointV4(const char *restrict address, u_short port);
+struct sockaddr* NSLEndpointV4(const char * address, u_short port);
 /* bind/connect to some 3 tuple */
 int NSLBindV4(int socket, const struct sockaddr *address);
 int NSLConnectV4(int socket, const struct sockaddr *address);

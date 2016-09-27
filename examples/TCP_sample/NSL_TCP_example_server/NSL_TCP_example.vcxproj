@@ -101,7 +101,7 @@
     <Link />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\NaiveSocketLibrary.c" />
+    <ClCompile Include="..\..\..\NaiveSocketLibrary.c" />
     <ClCompile Include="..\server.c" />
   </ItemGroup>
   <ItemGroup>

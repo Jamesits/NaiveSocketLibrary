@@ -23,10 +23,14 @@ int main(int argc, char *argv[])
 		char data[1024] = {0};
 		char recvBuff[1024] = {0};
 		printf("Send >");
+#ifdef _WIN32
+		scanf_s("%1023s", data, sizeof(data));
+#else
 		scanf("%1023s", data);
+#endif
 		if(strcmp("quit", data)==0)
 			break;
-		sendto(sConnection, data, strlen(data)+1, 0, peer, NSLEndpointV4Size);
+		sendto(sConnection, data, strlen(data)+1, 0, peer, NSLEndpointV4SocketLen);
 		socklen_t address_len = NSLEndpointV4SocketLen;
 		recvfrom(sConnection, recvBuff, 1024, 0, peer, &address_len);
 		printf("Received: %s\n", recvBuff);
