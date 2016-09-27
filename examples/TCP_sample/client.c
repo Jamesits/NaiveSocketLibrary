@@ -16,11 +16,11 @@ int main(int argc, char *argv[])
     NSLConnectV4(sClient, conn);   
 		
 	char message[1024] = {0};
-	int recvSize = recv(sClient, message, 1024, NULL);
+	int recvSize = recv(sClient, message, 1024, 0);
 	printf("Received: %s\n", message);
 
 	char msg_send[] = "NaiveSocketLibrary HELLO";
-	send(sClient, msg_send, sizeof(msg_send), NULL);
+	send(sClient, msg_send, sizeof(msg_send), 0);
 			
     NSLCloseSocket(sClient);
     NSLEnd();

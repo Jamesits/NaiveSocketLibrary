@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
 		scanf("%1023s", data);
 		if(strcmp("quit", data)==0)
 			break;
-		sendto(sConnection, data, strlen(data)+1, NULL, peer, NSL3TupleV4Size);
+		sendto(sConnection, data, strlen(data)+1, 0, peer, NSL3TupleV4Size);
 		socklen_t address_len = NSL3TupleV4SocketLen;
-		recvfrom(sConnection, recvBuff, 1024, NULL, peer, &address_len);
+		recvfrom(sConnection, recvBuff, 1024, 0, peer, &address_len);
 		printf("Received: %s\n", recvBuff);
 	}
 

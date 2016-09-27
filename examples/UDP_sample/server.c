@@ -24,14 +24,14 @@ int main(int argc, char *argv[])
 				
 		char message[1024] = {0};
 		socklen_t address_len = NSL3TupleV4SocketLen;
-		int recvBytes = recvfrom(sListen, message, sizeof(message), NULL, (struct sockaddr*)&clientAddr, &address_len);
+		int recvBytes = recvfrom(sListen, message, sizeof(message), 0, (struct sockaddr*)&clientAddr, &address_len);
 		if(recvBytes <= 0) 
 		{
 			printf("Client disconnected.\n");
 			break;
 		}
 		printf("Received: %s\n", message);
-		sendto(sListen, message, recvBytes, NULL, (struct sockaddr*)&clientAddr, address_len); 
+		sendto(sListen, message, recvBytes, 0, (struct sockaddr*)&clientAddr, address_len); 
 	}
 
    NSLCloseSocket(sListen);
