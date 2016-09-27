@@ -7,6 +7,18 @@
 #pragma once
 #ifndef __NAIVESOCKETLIBRARY_H__
 #define __NAIVESOCKETLIBRARY_H__
+#include <stdbool.h>
+
+/* NaiveSocketLibrary version */
+#define _NSL_VERSION_MAJOR 0
+#define _NSL_VERSION_MINOR 0
+#define _NSL_VERSION_REVISION 1
+#define _NSL_UNSTABLE true
+
+/* debug flag */
+#ifndef _NSL_DEBUG
+  #define _NSL_DEBUG 0
+#endif
 
 #ifdef _WIN32
   #define _NSL_OS_WINDOWS
@@ -63,8 +75,6 @@
   typedef struct sockaddr SOCKADDR;
   typedef struct sockaddr sockaddr;
 #endif
-
-#include <stdbool.h>
 
 /* initialize NaiveSocketLibrary */
 int NSLInit();
